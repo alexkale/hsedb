@@ -19,7 +19,7 @@ def main():
     Точка входа
     """
     print('Make DBs great again v0.1 ready')
-    base = database.DataBase(DB_PATH, ',', SCHEME_PATH)
+    base = database.DataBase(DB_PATH, ';', SCHEME_PATH)
     base.print_entries()
 
 if __name__ == '__main__':
