@@ -1,5 +1,6 @@
 title,str,0
-year,int,1
+genre,str,1
 director,str,2
 country,str,3
 budget,float,4
+year,int,5
