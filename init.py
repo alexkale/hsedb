@@ -9,7 +9,7 @@ Created on Sat Apr 21 11:31:12 2018
 import library.database as database
 
 #убрать, читать имена файлов из консоли
-DB_PATH = 'data/db.txt'
+DB_PATH = 'data/database_films'
 SCHEME_PATH = 'data/scheme.txt'
 
 #global to-do: разобраться с конвертацией в нужные типы данных после чтения файла
@@ -25,4 +25,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
+
