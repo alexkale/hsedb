@@ -12,14 +12,16 @@ import library.database as database
 DB_PATH = 'data/db.txt'
 SCHEME_PATH = 'data/scheme.txt'
 
+#global to-do: разобраться с конвертацией в нужные типы данных после чтения файла
+
 def main():
     """
     Точка входа
     """
     print('Make DBs great again v0.1 ready')
-    base = database.DataBase(DB_PATH, ',', DB_PATH)
-    base.print_scheme()
-    base.print_entries()
+    base = database.DataBase(DB_PATH, ',', SCHEME_PATH)
+    base.print_entries
+    print(base.select('title','=','Uncheck'))
 
 if __name__ == '__main__':
     main()

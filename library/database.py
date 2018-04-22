@@ -7,12 +7,14 @@ Created on Sat Apr 21 19:27:26 2018
 """
 
 import builtins
+import operator
 
 class DataBase:
     """
     Класс, описывающий базу данных
     Автор: Калентьев А. А.\n
     """
+
     def __init__(self, filename, delimiter, scheme_file):
         """
         Конструктор\n
@@ -29,6 +31,8 @@ class DataBase:
         self.delim = delimiter
         self.read_scheme()
         self.read_file()
+        self.ops = {'<' : operator.lt, '<=' : operator.le, '=' : operator.eq,
+                    '>' : operator.gt, '>=' : operator.ge, '!' : operator.not_}
         print('Создан объект базы данных')
 
     def write_file(self):
@@ -54,7 +58,7 @@ class DataBase:
                     #Формат файла схемы БД:
                     #Имя поля,Тип поля,Индекс поля
                     field_info = field[:-1].split(',')
-                    self.scheme[field_info[0]] = {'index' : field_info[2],
+                    self.scheme[field_info[0]] = {'index' : int(field_info[2]),
                                                   'type'  : field_info[1]}
         except Exception as exc:
             print('Ошибка чтения файла схемы базы данных: {0}'.format(exc))
@@ -143,3 +147,12 @@ class DataBase:
             del self.data[id_]
             return 0
         return -1
+
+    def select(self, field, operator, value):
+        """
+        Возвращает список записей, удовлетворяющих условию
+        Автор: Калентьев А. А.
+        """
+        idx = self.scheme[field]['index']
+        return [x for x in self.data if self.ops[operator](x[idx], value)]
+
