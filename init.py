@@ -20,8 +20,7 @@ def main():
     """
     print('Make DBs great again v0.1 ready')
     base = database.DataBase(DB_PATH, ',', SCHEME_PATH)
-    base.print_entries
-    print(base.select('title','=','Uncheck'))
+    base.print_entries()
 
 if __name__ == '__main__':
     main()
