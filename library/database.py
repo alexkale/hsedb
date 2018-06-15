@@ -68,6 +68,7 @@ class DataBase:
         Загружает базу данных из файла в память\n
         Автор: Калентьев А. А.\n
         """
+        #to-do: проверка и приведение типов
         self.data = []
         try:
             with open(self.database_file, 'r') as db_file:
@@ -101,7 +102,7 @@ class DataBase:
         """
         print('Записи в БД:')
         for index, entry in enumerate(self.data):
-            print('{0}: {1}'.format(index, ' '.join([str(x) for x in entry])))
+            print('{0}: {1}'.format(index, '\n\t'.join([str(x) for x in entry])))
 
     def add_entry(self, data):
         """
@@ -153,6 +154,6 @@ class DataBase:
         Возвращает список записей, удовлетворяющих условию
         Автор: Калентьев А. А.
         """
+        #временный вариант
         idx = self.scheme[field]['index']
         return [x for x in self.data if self.ops[operator](x[idx], value)]
-
