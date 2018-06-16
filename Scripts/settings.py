@@ -1,4 +1,4 @@
-DB_PATH = 'data/main.shl'
+DB_PATH = '../Data/main.shl'
 
 field_types = {'Title':'string','Genre':'string',
                'Director':'string','Country':'string',

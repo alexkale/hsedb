@@ -1,6 +1,6 @@
 import tkinter as tk
-import library.db_helper as db_helper
-import library.db_operations as db_operations
+import Library.db_helper as db_helper
+import Library.db_operations as db_operations
 import Scripts.settings as settings
 
 root = object()
@@ -260,7 +260,7 @@ def create_table_from_entries(entries, parent):
     Возвращает объект класса tkinter.Frame\n
     Автор: Калентьев А.А., Жеребцов Д.Д.
     """
-    icon = tk.PhotoImage(file='graphics/edit.gif')
+    icon = tk.PhotoImage(file='../Graphics/edit.gif')
     table_frame = tk.Frame(parent, width=800)
     c = tk.Label(table_frame, bg = '#f7f3c5', text = 'ID', font='Arial 12')
     c.grid(row = 0,column = 0, sticky = tk.NSEW)
@@ -313,6 +313,9 @@ def show_stats():
                                       .format(stats['max_budget']))
     avg_budget = tk.Label(main_frame, text='Средний бюджет: {0}, $ млн.'
                                       .format(round(stats['avg_budget'],1)))
+    avg_budget = tk.Label(main_frame, 
+                    text='Выборочная дисперсия бюджета в выборке: {0}'
+                                      .format(round(stats['budget_variance'],2)))
     min_year = tk.Label(main_frame, text='Самая ранняя дата выхода: {0}'
                                       .format(stats['min_year']))
     max_year = tk.Label(main_frame, text='Самая поздняя дата выхода: {0}'
@@ -329,14 +332,16 @@ def show_stats():
     
     main_frame.pack()
     
-    with open('output/stats.txt','w+') as f:
+    with open('../Output/stats.txt','w+') as f:
         stats = 'Статистика для последней выборки:\n\tМинимальный бюджет: {0}, $ млн.\n\
         Максимальный бюджет: {1}, $ млн.\n\
         Средний бюджет: {2}, $ млн.\n\
-        Самая ранняя дата выхода: {3}\n\
-        Самая поздняя дата выхода: {4}\n\
-        Количество записей в выборке: {5}'.format(stats['min_budget'],
-                stats['max_budget'],round(stats['avg_budget'],2),stats['min_year'],
+        Выборочная дисперсия бюджета в выборке: {3}\n\
+        Самая ранняя дата выхода: {4}\n\
+        Самая поздняя дата выхода: {5}\n\
+        Количество записей в выборке: {6}'.format(stats['min_budget'],
+                stats['max_budget'],round(stats['avg_budget'],2),
+                round(stats['budget_variance'],2),stats['min_year'],
                 stats['max_year'],stats['entries'])
         f.write(stats)
 

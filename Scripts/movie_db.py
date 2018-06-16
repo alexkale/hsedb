@@ -1,7 +1,10 @@
-import Library.db_helper as db_helper
-import Scripts.gui as gui
-import Scripts.settings as settings
 import sys
+sys.path.insert(0, '..')
+import gui as gui
+import settings as settings
+import Library.db_helper as db_helper
+
+
 
 db_list = [['Криминальное чтиво', 'криминал, комедия, триллер', 'Квентин Тарантино', 'США', 8.0, 1994],
   ['Бешеные псы', 'криминал, триллер, драма', 'Квентин Тарантино', 'США', 1.2, 1991], 

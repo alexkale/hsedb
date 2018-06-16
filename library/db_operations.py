@@ -1,5 +1,6 @@
 import operator
 import shelve as sh
+import Library.stat as stat
 
 def inrange(val, boundaries): 
     if val >= boundaries[0] and val <= boundaries[1]:
@@ -148,4 +149,5 @@ def db_stats(db):
     stats['min_year'] = min(years)
     stats['max_year'] = max(years)
     stats['entries'] = len(db)
+    stats['budget_variance'] = stat.sample_variance(budgets)
     return stats
